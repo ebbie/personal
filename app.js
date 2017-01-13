@@ -31,7 +31,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 mongoose.connect("mongodb://localhost/registration");
-//mongoose.connect("mongodb://arapally:123@ds159978.mlab.com:59978/heroku_tv2v2gwj");
 
 //contact form
 var contactformSchema = new mongoose.Schema({
@@ -58,18 +57,6 @@ app.post('/contact.html', function(req,res){
       if(err){
         console.log(err);
       }else{
-//           var transporter = nodemailer.createTransport(smtpTransport({
-//                                       service: 'Gmail',
-//                                       auth: {
-//                                             user: 'yerneni.sridevi@gmail.com',
-//                                             pass: 'S21@r#ivij'
-//                                           },
-//                                         from: 'ebbie777@gmail.com',
-//                                         to: email,
-//                                         subject: 'hello',
-//                                         html: '<b>hello world!</b>',
-//                                         text: 'hello world!. Test Email'
-//                                       }));
                   transporter.sendMail({
                                    from: 'noreply@kcbrag.com',
                                    to: email,
@@ -85,24 +72,6 @@ app.post('/contact.html', function(req,res){
     });
 });
 
-// app.get("/login", function(req, res){
-//   res.render("login");
-// });
-//login page
-// app.post("/login", passport.authenticate('local', {
-//   succesRedirect: "/secret",
-//   failureRedirect: "/error"
-// }), function(req, res){
-// });
-
-//Register form
-// var registerformSchema = new mongoose.Schema({
-//   username: String,
-//   email: String,
-//   password1: String,
-//   password2: String
-// });
-// var registerform = mongoose.model("registerform", registerformSchema);
 
 app.post('/registersubmit', function(req,res){
     // res.send("Post is working");
@@ -122,25 +91,6 @@ app.post('/registersubmit', function(req,res){
       });
     });
 });
-    //Create New Register form and save it to DB
-    // registerform.create(newregisterform, function(err, newlyCreated){
-    //   if(err){
-    //     console.log(err);
-    //   }else{
-    //
-    //               transporter.sendMail({
-    //                                from: 'noreply@kcbrag.com',
-    //                                to: email,
-    //                                subject: 'Enroll-Medicare',
-    //                                html: "Test Email Enroll Medicare",
-    //                                text: 'Test Email from Enroll Medicare'
-    //                             });
-
-//              redirect to Contactform
-    //           res.render("registerconfirm.ejs", {register:newregisterform});
-    //   }
-    // });
-// });
 
 //===================
 //Routes
